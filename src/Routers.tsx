@@ -1,11 +1,11 @@
 import React from "react";
-import { HomePage } from "./pages/Home";
+import { ListShopping } from "./pages/ListShopping";
 import { Routes, Route } from "react-router-dom";
 
 export const Routers: React.FC = () => {
 	return (
 		<Routes>
-			<Route path='/' element={<HomePage />} />
+			<Route path='/' element={<ListShopping />} />
 		</Routes>
 	);
 };

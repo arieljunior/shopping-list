@@ -2,7 +2,7 @@ import React from "react";
 import { Container } from "./styles";
 import {Header} from '../../components/organisms/Header';
 
-export const HomePage: React.FC = () => {
+export const ListShopping: React.FC = () => {
 	return (
 		<Container>
 			<Header/>
