@@ -1,16 +1,19 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import { Routers } from "./Routers";
-import { ToastContainer } from "react-toastify";
+import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import { Routers } from "./Routers";
 import "react-toastify/dist/ReactToastify.css";
-import './styles/global.css'
-ReactDOM.render(
+import "./styles/global.css";
+
+const container = document.getElementById("root");
+const root = createRoot(container!);
+
+root.render(
 	<React.StrictMode>
 		<ToastContainer />
 		<BrowserRouter>
 			<Routers />
 		</BrowserRouter>
-	</React.StrictMode>,
-	document.getElementById("root")
+	</React.StrictMode>
 );
