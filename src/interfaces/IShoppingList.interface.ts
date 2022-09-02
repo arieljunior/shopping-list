@@ -1,5 +1,5 @@
-export interface IShoppingListResponseApi {
-	id: number;
+export interface IShoppingResponseApi {
+	id: string;
 	name: string;
 	dateCreated: string;
 	dateLastUpdate: string;
@@ -7,7 +7,7 @@ export interface IShoppingListResponseApi {
 }
 
 export interface IShoppingListBuilded {
-	id: number;
+	id: string;
 	name: string;
 	dateCreated: string;
 	dateLastUpdate: string;
@@ -16,8 +16,17 @@ export interface IShoppingListBuilded {
 	products: IProduct[];
 }
 
+export interface IShoppingDetailBuilded {
+	id: string;
+	name: string;
+	dateLastUpdate: string;
+    totalProducts: number;
+    totalPrice: string;
+	products: IProduct[];
+}
+
 export interface IProduct {
-    id: number;
+    id: string;
     name: string;
     price: number;
     quantity: number;

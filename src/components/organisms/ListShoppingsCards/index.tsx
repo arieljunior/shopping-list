@@ -1,19 +1,20 @@
 import React, { useMemo } from "react";
 import { ContainerShoppingList } from "./styles";
-import { useShoppingList } from "../../../hooks/request/shoppingList.hook";
+import { useShoppingList } from "../../../hooks/request/useShoppingList.hook";
 import { CardBase } from "../../molecules/Card";
 import shoppingListBuilder from "../../../builders/shoppingList.builder";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {}
 
 export const ShoppingList: React.FC<IProps> = () => {
+	let navigate = useNavigate();
 	const { data, isLoading } = useShoppingList();
 
-	const handleClickCard = (id: string) =>
-		console.log(`Clickou no Card id: ${id}`);
-		
+	const handleClickCard = (id: string) => navigate(`/detailShopping/${id}`);
+
 	const dataBuilded = useMemo(() => {
-		return data ? new shoppingListBuilder().build(data) : [];
+		return data ? shoppingListBuilder.build(data) : [];
 	}, [data]);
 
 	if (isLoading) {
@@ -24,7 +25,7 @@ export const ShoppingList: React.FC<IProps> = () => {
 		<ContainerShoppingList>
 			{dataBuilded.map((item) => (
 				<CardBase
-					onClickCard={() => handleClickCard(item.id.toString())}
+					onClickCard={() => handleClickCard(item.id)}
 					key={item.id}
 					title={item.name}
 					footerText={item.totalPrice}>

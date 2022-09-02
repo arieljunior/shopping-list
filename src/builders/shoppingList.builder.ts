@@ -1,31 +1,22 @@
 import {
-	IShoppingListResponseApi,
+	IShoppingResponseApi,
 	IShoppingListBuilded,
-	IProduct,
 } from "../interfaces/IShoppingList.interface";
+import { getTotalSumCurrencyBRL, formatDateWithTime } from "../utils/helpers.utils";
 
 export default class shoppingListBuild {
-	build(data: IShoppingListResponseApi[]): IShoppingListBuilded[] {
+	static build(data: IShoppingResponseApi[]): IShoppingListBuilded[] {
 		const newData: IShoppingListBuilded[] = data.map((item) => {
-			let created = new Date(item.dateCreated);
-			let lastUpdated = new Date(item.dateLastUpdate);
+			let prices = item.products.map((i) => i.price);
 			return {
 				...item,
 				totalProducts: item.products.length,
-				dateCreated: created.toLocaleDateString() + " " + created.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
-				dateLastUpdate: lastUpdated.toLocaleDateString() + " " + lastUpdated.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}),
-				totalPrice: this.calculateTotalPrice(item.products),
+				dateCreated: formatDateWithTime(item.dateCreated),
+				dateLastUpdate: formatDateWithTime(item.dateLastUpdate),
+				totalPrice: getTotalSumCurrencyBRL(prices),
 			};
 		});
 
 		return newData;
-	}
-
-	private calculateTotalPrice(products: IProduct[]): string {
-		const total = products.reduce((acc, product) => acc + product.price, 0);
-		return total.toLocaleString("pt-br", {
-			style: "currency",
-			currency: "BRL",
-		});
 	}
 }
