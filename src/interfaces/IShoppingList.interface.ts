@@ -3,10 +3,20 @@ export interface IShoppingListResponseApi {
 	name: string;
 	dateCreated: string;
 	dateLastUpdate: string;
-	products: IProducts[];
+	products: IProduct[];
 }
 
-export interface IProducts {
+export interface IShoppingListBuilded {
+	id: number;
+	name: string;
+	dateCreated: string;
+	dateLastUpdate: string;
+    totalProducts: number;
+    totalPrice: string;
+	products: IProduct[];
+}
+
+export interface IProduct {
     id: number;
     name: string;
     price: number;
