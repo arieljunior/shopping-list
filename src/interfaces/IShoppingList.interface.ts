@@ -22,7 +22,11 @@ export interface IShoppingDetailBuilded {
 	dateLastUpdate: string;
     totalProducts: number;
     totalPrice: string;
-	products: IProduct[];
+	products: IProductWithTotalPrice[];
+}
+
+export interface IProductWithTotalPrice extends IProduct {
+	totalPriceBRL: string
 }
 
 export interface IProduct {

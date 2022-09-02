@@ -1,8 +1,9 @@
 import React, { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { Container, ContentHeader } from "./styles";
+import { Container, ContainerButtonFloat, ContainerCards, ContentHeader } from "./styles";
 import { useShopping } from "../../../hooks/request/useShopping.hook";
 import { shoppingListBuilder } from "../../../builders/shoppingDetail.builder";
+import { CardBase } from "../../molecules/Card";
 
 interface IProps {}
 
@@ -26,6 +27,21 @@ export const DetailShopping: React.FC<IProps> = () => {
 				<h2>{dataBuilded?.totalProducts} produtos</h2>
 				<h4>ultima atualização: {dataBuilded?.dateLastUpdate}</h4>
 			</ContentHeader>
+			<ContainerCards>
+				{dataBuilded?.products.map((product) => (
+					<CardBase
+						key={product.id}
+						title={product.name}
+						footerText={product.totalPriceBRL}
+                        subtitle={product.category}
+                        >
+						<div>children</div>
+					</CardBase>
+				))}
+			</ContainerCards>
+            {/* <ContainerButtonFloat>
+                    <button>+</button>
+            </ContainerButtonFloat> */}
 		</Container>
 	);
 };

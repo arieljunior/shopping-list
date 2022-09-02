@@ -7,7 +7,7 @@ import { getTotalSumCurrencyBRL, formatDateWithTime } from "../utils/helpers.uti
 export default class shoppingListBuild {
 	static build(data: IShoppingResponseApi[]): IShoppingListBuilded[] {
 		const newData: IShoppingListBuilded[] = data.map((item) => {
-			let prices = item.products.map((i) => i.price);
+			let prices = item.products.map((i) => i.price * i.quantity);
 			return {
 				...item,
 				totalProducts: item.products.length,
