@@ -26,20 +26,3 @@ export const ContainerCards = styled.div`
     overflow-x: hidden;
     height: 610px;
 `;
-
-export const ContainerButtonFloat = styled.div`
-    position: absolute;
-    bottom: 40px;
-    left: 80px;
-
-    width: 100px;
-    
-    button{
-        font-size: 60px;
-        width: 100%;
-        border-radius: 10px;
-        cursor: pointer;
-        background-color: ${colors.orange_main};
-        color: ${colors.grey};
-    }
-`

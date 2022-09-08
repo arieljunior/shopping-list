@@ -1,6 +1,6 @@
 import React, { useMemo } from "react";
 import { useParams } from "react-router-dom";
-import { Container, ContainerButtonFloat, ContainerCards, ContentHeader } from "./styles";
+import { Container, ContainerCards, ContentHeader } from "./styles";
 import { useShopping } from "../../../hooks/request/useShopping.hook";
 import { shoppingListBuilder } from "../../../builders/shoppingDetail.builder";
 import { CardBase } from "../../molecules/Card";
@@ -39,9 +39,6 @@ export const DetailShopping: React.FC<IProps> = () => {
 					</CardBase>
 				))}
 			</ContainerCards>
-            {/* <ContainerButtonFloat>
-                    <button>+</button>
-            </ContainerButtonFloat> */}
 		</Container>
 	);
 };

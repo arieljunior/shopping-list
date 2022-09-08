@@ -8,6 +8,8 @@ const colors = {
     grey: '#e6e6e6',
     grey_1: '#4d4d4d',
     black_light: '#4d4d4d',
+    danger: '#ff6666',
+    blue: '#3385ff',
 }
 
 export default colors;
