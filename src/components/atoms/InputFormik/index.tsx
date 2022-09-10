@@ -12,9 +12,10 @@ interface IProps {
 	placeholder: string;
 	name: string;
 	type?: string;
+	required?: boolean;
 }
 
-export const InputFormik: React.FC<IProps> = ({ name, placeholder, type }) => {
+export const InputFormik: React.FC<IProps> = ({ name, placeholder, type, required }) => {
 	const { getFieldMeta } = useFormikContext();
 	const { touched, value, error } = getFieldMeta(name);
 	const isWarning = !!error && touched;
@@ -35,7 +36,7 @@ export const InputFormik: React.FC<IProps> = ({ name, placeholder, type }) => {
 					name={name}
 					placeholder={placeholder}
 					type={type || "text"}
-					required
+					required={required}
 				/>
 				{error && touched && <InputError>{error}</InputError>}
 			</InputContainer>
