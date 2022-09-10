@@ -7,9 +7,8 @@ export const InputContainer = styled.div`
 	position: relative;
 	height: 39px;
 
-  
 	> input {
-    border-radius: 3px;
+		border-radius: 3px;
 		border: 1px solid ${colors.green_main};
 	}
 	&[data-warning="true"] {
@@ -40,7 +39,7 @@ export const InputLabel = styled.label`
 	background: white;
 	font-size: 12px;
 	padding: 0px 3px;
-  border-radius: 3px;
+	border-radius: 3px;
 `;
 
 export const InputStyled = styled(Field)`
@@ -51,11 +50,11 @@ export const InputStyled = styled(Field)`
 	padding: 0 10px;
 
 	&::placeholder {
-		color: ${colors.grey};
+		color: #a6a6a6;
 	}
 	&:focus {
 		outline: none;
-    border: 1px solid ${colors.orange_main};
+		border: 1px solid ${colors.orange_main};
 	}
 `;
 

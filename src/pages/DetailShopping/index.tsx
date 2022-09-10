@@ -10,16 +10,10 @@ interface IProps {}
 
 export const DetailShoppingPage: React.FC<IProps> = () => {
 
-	const [open, setOpen] = React.useState<boolean>(false);
-
 	return (
 		<ContainerMobile>
 			<Header title='DETALHES' includeGoBak />
-			<ButtonOpenCreateProduct onClick={()=> setOpen(true)} type="button">Adicionar produto</ButtonOpenCreateProduct>
 			<DetailShopping />
-			<ModalCustom removeButtonConfirm title="Novo produto" show={open} handleClose={()=> setOpen(false)}>
-				<CreateProductForm />
-			</ModalCustom>
 		</ContainerMobile>
 	);
 };

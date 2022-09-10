@@ -4,12 +4,16 @@ import { Container, ContainerCards, ContentHeader } from "./styles";
 import { useShopping } from "../../../hooks/request/useShopping.hook";
 import { shoppingListBuilder } from "../../../builders/shoppingDetail.builder";
 import { CardBase } from "../../molecules/Card";
+import { ModalCustom } from "../../molecules/Modal";
+import { CreateProductForm } from "../CreateProductForm";
+import { Button } from "../../atoms/Button";
 
 interface IProps {}
 
 export const DetailShopping: React.FC<IProps> = () => {
 	let { id } = useParams();
 	const { data, isLoading } = useShopping(id!);
+	const [open, setOpen] = React.useState<boolean>(false);
 
 	const dataBuilded = useMemo(() => {
 		return data ? shoppingListBuilder.build(data) : null;
@@ -39,6 +43,11 @@ export const DetailShopping: React.FC<IProps> = () => {
 					</CardBase>
 				))}
 			</ContainerCards>
+
+			<Button onClick={()=> setOpen(true)} type="button">Adicionar produto</Button>
+			<ModalCustom removeButtonConfirm title="Novo produto" show={open} handleClose={()=> setOpen(false)}>
+				<CreateProductForm idShopping={id!} products={data?.products || []} onCreated={()=> setOpen(false)}/>
+			</ModalCustom>
 		</Container>
 	);
 };

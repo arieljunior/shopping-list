@@ -1,3 +1,5 @@
+import { IProduct } from "./IProduct.interface";
+
 export interface IShoppingResponseApi {
 	id: string;
 	name: string;
@@ -29,10 +31,4 @@ export interface IProductWithTotalPrice extends IProduct {
 	totalPriceBRL: string
 }
 
-export interface IProduct {
-    id: string;
-    name: string;
-    price: number;
-    quantity: number;
-    category: string;
-}
+
