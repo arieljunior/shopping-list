@@ -8,9 +8,6 @@ export const ContainerCard = styled.div`
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    div{
-        width: 100%;
-    }
 `;
 
 export const HeaderCard = styled.div`

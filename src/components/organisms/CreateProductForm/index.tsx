@@ -1,9 +1,9 @@
 import React from "react";
-import { Formik } from "formik";
+import { Formik, FormikHelpers } from "formik";
 import { InputFormik } from "../../atoms/InputFormik";
-import { Button } from "../../atoms/Button";
+import { ButtonCustom } from "../../atoms/Button";
 import { FormArea, TwoFields, ActionsArea } from "./styles";
-import { useCreateProductMutation } from "../../../hooks/mutations/useCreateProduct.mutation";
+import { useUpdateProductsMutation } from "../../../hooks/mutations/useCreateProduct.mutation";
 import { IProduct, IFormProduct } from "../../../interfaces/IProduct.interface";
 import { createProductBuilder } from "../../../builders/createProduct.builder";
 const INITIAL_VALUES: IFormProduct = {
@@ -24,7 +24,7 @@ export const CreateProductForm: React.FC<IProps> = ({
 	products,
 	onCreated,
 }) => {
-	const { mutateAsync: create } = useCreateProductMutation();
+	const { mutateAsync: create } = useUpdateProductsMutation();
 
 	return (
 		<Formik
@@ -64,9 +64,9 @@ export const CreateProductForm: React.FC<IProps> = ({
 						/>
 					</TwoFields>
 					<ActionsArea>
-						<Button type='submit' disabled={isSubmitting}>
+						<ButtonCustom type='submit' disabled={isSubmitting}>
 							Criar
-						</Button>
+						</ButtonCustom>
 						{/* <Button type='submit' disabled={isSubmitting}>
 							Criar e Continuar
 						</Button> */}

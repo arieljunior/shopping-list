@@ -37,6 +37,7 @@ export const InputLabel = styled.label`
 	top: -6px;
 	left: 10px;
 	background: white;
+	color: ${colors.black_main};
 	font-size: 12px;
 	padding: 0px 3px;
 	border-radius: 3px;

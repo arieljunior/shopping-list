@@ -1,6 +1,6 @@
 import React from "react";
 import { Body, Content, Footer, Header, Modal, Title } from "./styles";
-import { Button } from "../../atoms/Button";
+import { ButtonCustom } from "../../atoms/Button";
 
 interface IModalCustom {
 	show: boolean;
@@ -32,9 +32,9 @@ export const ModalCustom: React.FC<IModalCustom> = ({
 						<Body>{children}</Body>
 						{!removeActions && (
 							<Footer>
-								<Button onClick={handleClose}>Fechar</Button>
+								<ButtonCustom onClick={handleClose}>Fechar</ButtonCustom>
 								{!removeButtonConfirm && (
-									<Button onClick={handleConfirm}>Confirmar</Button>
+									<ButtonCustom onClick={handleConfirm}>Confirmar</ButtonCustom>
 								)}
 							</Footer>
 						)}

@@ -3,7 +3,7 @@ import { KEY_QUERY } from '../../enum/keyQuery.enum';
 import { createProduct } from '../../utils/requests/product.requests';
 
 
-export function useCreateProductMutation() {
+export function useUpdateProductsMutation() {
     const queryClient = useQueryClient();
     return useMutation(createProduct, {
       onSuccess: ()=> {
