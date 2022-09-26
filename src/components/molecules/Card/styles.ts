@@ -7,7 +7,6 @@ export const ContainerCard = styled.div<{hasCursorPointer?: boolean}>`
     color: ${colors.white_main};
     padding: 5px 10px;
     border-radius: 5px;
-    cursor: ${props => props.hasCursorPointer ? 'pointer' : 'auto'};
 `;
 
 export const HeaderCard = styled.div`

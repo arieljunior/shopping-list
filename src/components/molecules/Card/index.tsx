@@ -6,7 +6,6 @@ interface IProps {
 	subtitle?: string;
 	children?: React.ReactElement | React.ReactElement[];
 	footerText: string;
-	onClickCard?: () => void;
 	onClickDelete?: () => void;
 }
 
@@ -15,11 +14,10 @@ export const CardBase: React.FC<IProps> = ({
 	subtitle,
 	children,
 	footerText,
-	onClickCard,
 	onClickDelete
 }) => {
 	return (
-		<ContainerCard onClick={onClickCard? onClickCard : ()=>{}} hasCursorPointer={!!onClickCard}>
+		<ContainerCard>
 			<HeaderCard>
 				<h2>{title}</h2>
 				{subtitle && <h4>{subtitle}</h4>}
