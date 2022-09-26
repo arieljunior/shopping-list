@@ -24,7 +24,6 @@ export const DetailShopping: React.FC<IProps> = () => {
 	const [open, setOpen] = React.useState<boolean>(false);
 	
 	const handleUpdateProducts = async (values:IFormCardProduct, {setSubmitting}: FormikHelpers<IFormCardProduct>, idProduct: string) => {
-		
 		if(id){
 			const shoppingEntity = new ShoppingEntity(id, data?.products || []);
 			shoppingEntity.updatePriceAndQuantityById(idProduct, values.quantity, values.price);
@@ -35,7 +34,18 @@ export const DetailShopping: React.FC<IProps> = () => {
 			});
 		}
 		setSubmitting(false);
-	} 
+	}
+
+	const handleDeleteProduct = async (idProduct: string) => {
+		if(id){
+			const shoppingEntity = new ShoppingEntity(id, data?.products || []);
+			shoppingEntity.removeProduct(idProduct);
+			await updateProducts({
+				idShopping: id,
+				products: shoppingEntity.products
+			})
+		}
+	}
 
 	const dataBuilded = useMemo(() => {
 		return data ? shoppingListBuilder.build(data) : null;
@@ -60,7 +70,9 @@ export const DetailShopping: React.FC<IProps> = () => {
 						key={product.id}
 						title={product.name}
 						footerText={product.totalPriceBRL}
-						subtitle={product.category}>
+						subtitle={product.category}
+						onClickDelete={()=> handleDeleteProduct(product.id)}
+					>
 						<Formik
 							initialValues={{
 								price: product.price || 0,

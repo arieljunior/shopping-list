@@ -14,7 +14,7 @@ export default class Shopping {
 		quantity: number,
 		price: number
 	) {
-		const indexProduct = this.products.findIndex((p) => p.id === idProduct);
+		const indexProduct = this.getIndexProduct(idProduct);
         
         if(indexProduct === -1) return;
 
@@ -23,6 +23,10 @@ export default class Shopping {
             price,
             quantity
         }
+	}
+
+	private getIndexProduct (idProduct: string) {
+		return this.products.findIndex((p) => p.id === idProduct)
 	}
 
 	addNewProduct(product: IFormProduct){
@@ -35,5 +39,15 @@ export default class Shopping {
         };
 
 		this.products.push(newProduct);
+	}
+
+	removeProduct(idProduct: string): boolean{
+		const index = this.getIndexProduct(idProduct);
+
+        if(index === -1) return false;
+		
+		this.products.splice(index, 1);
+
+		return true
 	}
 }
