@@ -1,4 +1,4 @@
-import { IProduct } from "../interfaces/IProduct.interface";
+import { IFormProduct, IProduct } from "../interfaces/IProduct.interface";
 
 export default class Shopping {
 	id: string;
@@ -23,5 +23,17 @@ export default class Shopping {
             price,
             quantity
         }
+	}
+
+	addNewProduct(product: IFormProduct){
+		const newProduct:IProduct = {
+            id: (this.products.length + 1).toString(),
+            category: product.category,
+            name: product.name,
+            price: product.price || 0,
+            quantity: product.quantity || 0
+        };
+
+		this.products.push(newProduct);
 	}
 }

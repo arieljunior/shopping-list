@@ -5,7 +5,7 @@ import { ButtonCustom } from "../../atoms/Button";
 import { FormArea, TwoFields, ActionsArea } from "./styles";
 import { useUpdateProductsMutation } from "../../../hooks/mutations/useCreateProduct.mutation";
 import { IProduct, IFormProduct } from "../../../interfaces/IProduct.interface";
-import { createProductBuilder } from "../../../builders/createProduct.builder";
+import ShoppingEntity from "../../../entities/shopping.class";
 const INITIAL_VALUES: IFormProduct = {
 	name: "",
 	category: "",
@@ -30,13 +30,12 @@ export const CreateProductForm: React.FC<IProps> = ({
 		<Formik
 			initialValues={INITIAL_VALUES}
 			onSubmit={async (values, { setSubmitting }) => {
-				const myProducts = [...products];
-				myProducts.push(
-					createProductBuilder.buildDataToCreate(values, products.length)
-				);
+				
+				const shoppingEntity = new ShoppingEntity(idShopping, products);
+				shoppingEntity.addNewProduct(values)
 				await create({
 					idShopping,
-					products: myProducts,
+					products: shoppingEntity.products,
 				});
 				setSubmitting(false);
 				onCreated();
@@ -67,9 +66,6 @@ export const CreateProductForm: React.FC<IProps> = ({
 						<ButtonCustom type='submit' disabled={isSubmitting}>
 							Criar
 						</ButtonCustom>
-						{/* <Button type='submit' disabled={isSubmitting}>
-							Criar e Continuar
-						</Button> */}
 					</ActionsArea>
 				</FormArea>
 			)}
